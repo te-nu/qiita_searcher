@@ -2,10 +2,14 @@ import axios from "axios";
 
 export const SEARCH = "SEARCH";
 
-export function search() {
-    // return { type: SEARCH }
+export function search(searchWord) {
+    if (searchWord == "") {
+        searchWord = null
+    }
     return (dispatch, getState) => {
-        axios.get("https://qiita.com/api/v2/items").then((response) => {
+        axios.get("https://qiita.com/api/v2/items", {
+            params: { query: searchWord }
+        }).then((response) => {
             dispatch(getArticles(response.data));
         })
     }

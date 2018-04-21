@@ -9,8 +9,8 @@ const mapStateToProps = (state): Props => {
 
 const mapDispatchToProps = (dispatch): Events => {
     return {
-        onSearchSubmit: () => {
-            dispatch(search())
+        onSearchSubmit: (searchWord: string) => {
+            dispatch(search(searchWord))
         }
     }
 }
